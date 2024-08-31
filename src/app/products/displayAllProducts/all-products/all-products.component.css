@@ -1,0 +1,8 @@
+.cursor-pointer{
+    cursor: pointer;
+}
+.p-bg{
+    background-color: rgb(221, 104, 163);
+    color: white;
+    font-weight: 500;
+}

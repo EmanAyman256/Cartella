@@ -1,0 +1,15 @@
+<div class="container p-5">
+    <div class="row shadow-sm mt-3">
+        <div class="col-md-4" *ngIf="specificProduct">
+            <img [src]="specificProduct.imageCover" class="w-100 h-100" alt="">
+        </div>
+        <div class="col-md-8 mt-5">
+            <h3>{{specificProduct.title}}</h3>
+            <p>{{specificProduct.description}}</p>
+            <div class="mt-5">
+            <p class=" p-bg rounded text-center">{{specificProduct.price|number}} EGP</p>
+            <!-- <button class="btn">Add To Cart </button> -->
+        </div>
+        </div>
+    </div>
+</div>

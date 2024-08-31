@@ -1,0 +1,21 @@
+<div class="text-center mt-5" *ngIf="isLoading">
+    <app-loader/>
+</div>
+<div class="container p-5">
+    <div class="row g-3">
+        <div class="col-md-3"*ngFor="let product of products">
+            <div [routerLink]="['/product',product.id]" class="product-item overflow-hidden rounded w-100  pt-5 shadow text-center cursor-pointer">
+                <img [src]="product.imageCover" class="w-100 h-75" alt="">
+                <div class="text w-100 h-50 ">
+                    <h5>{{product.title.substring(0,20)}}</h5>
+                    <p class="text-muted fw-medium">{{product.description.substring(0,50)+"..."}}</p>
+                    <!-- <button class="btn p-bg mb-3 ">Add To Cart</button> -->
+                </div>
+                <!-- <p>{{product.value.imageCover}}</p> -->
+                <!-- <img [src]="product.imageCover" class="w-100" alt="">
+                <h5>{{product.title}}</h5>
+                <p>{{product.title}}</p> -->
+            </div>
+        </div>
+    </div>
+</div>
