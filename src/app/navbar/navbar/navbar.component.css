@@ -18,3 +18,19 @@ fa-icon{
 .cursor-pointer{
     cursor: pointer;
 }
+.badge {
+  padding-left: 9px;
+  padding-right: 9px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+}
+
+#CartCount {
+    font-size: 12px;
+    background: #4e0125;
+    color: #fff;
+    padding: 4px;
+    vertical-align: top;
+    margin-left: -10px; 
+}

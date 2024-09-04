@@ -1,6 +1,12 @@
 <nav class="navbar shadow-sm navbar-expand-lg fw-medium">
     <div class="container">
-      <fa-icon [icon]="bagShopping"></fa-icon>
+      <div>
+
+        <fa-icon [icon]="bagShopping">
+        </fa-icon>
+      </div>
+
+
       <a class="navbar-brand" routerLink="/products" >Cartella.</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,16 +16,23 @@
           <li  class="nav-item" *ngIf="isAuthenticated" >
             <a class="nav-link active" aria-current="page"  routerLink="/products" >Products</a>
           </li>
-          <!-- <li class="nav-item" *ngIf="isAuthenticated">
-            <a class="nav-link" href="#">WishList</a>
-          </li> -->
+        
           <li class="nav-item" *ngIf="isAuthenticated">
             <a class="nav-link" routerLink="/categories">Categories</a>
           </li>
-          <!-- <li class="nav-item" *ngIf="isAuthenticated">
-            <a class="nav-link" href="#" >Cart</a>
-          </li> -->
-          <!-- <fa-icon [icon]="cart" class="cart-icon" *ngIf="isAuthenticated"></fa-icon> -->
+          <li class="nav-item" *ngIf="isAuthenticated">
+            <a class="nav-link" routerLink="/cart">Cart</a>
+          </li>
+          <li>
+            <div *ngIf="isAuthenticated" class= "mt-1 position-relative">
+              <fa-icon [icon]="cart" class="cart-icon cursor-pointer " routerLink="/cart" ></fa-icon>
+              <span class=" badge " id="CartCount">{{numOfItems}}</span>
+
+            </div>
+          </li>
+          <li class="nav-item cursor-pointer">
+            <a class="nav-link" *ngIf="isAuthenticated" routerLink="/allorders">All Orders</a>
+          </li>
           <li class="nav-item cursor-pointer">
             <a class="nav-link" *ngIf="isAuthenticated" (click)="onLogout()">Logout</a>
           </li>

@@ -1,0 +1,9 @@
+---
+applications:
+- name: cartella
+  instances: 1
+  memory: 2G
+  buildpacks: 
+  - staticfile_buildpack
+
+

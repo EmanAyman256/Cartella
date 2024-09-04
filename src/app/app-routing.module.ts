@@ -6,6 +6,9 @@ import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
 import { CategoriesComponent } from './categories/categories/categories.component';
+import { GetCartComponent } from './cart/get-cart/get-cart.component';
+import { CheckoutPaymentComponent } from './cart/get-cart/checkout-payment/checkout-payment.component';
+import { AllOrdersComponent } from './all-orders/all-orders.component';
 
 const routes: Routes = [
   {
@@ -36,6 +39,24 @@ const routes: Routes = [
   {
     path:'categories',
     component:CategoriesComponent,
+    canActivate:[AuthGuard]
+
+  },
+  {
+    path:'cart',
+    component:GetCartComponent,
+    canActivate:[AuthGuard]
+
+  }
+  ,{
+    path:'pay',
+    component:CheckoutPaymentComponent,
+    canActivate:[AuthGuard]
+
+  },
+  {
+    path:'allorders',
+    component:AllOrdersComponent,
     canActivate:[AuthGuard]
 
   }

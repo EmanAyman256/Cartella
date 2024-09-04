@@ -1,8 +1,20 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-
+import { catchError, throwError } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
+function equalValue(control:AbstractControl)
+{
+  const password=control.get('password')?.value;
+  const confirmPassword=control.get('rePassword')?.value;
+  if(password===confirmPassword)
+  {
+    return null;
+  }
+  return{NorEqualValues:true}
+}
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -15,12 +27,13 @@ export class SignupComponent {
 
   constructor(private AuthSrvice:AuthService,private router:Router){}
   signupForm=new FormGroup({
-    name:new FormControl('',{validators:[Validators.required]}),
-    email:new FormControl('',{validators:Validators.required}),
+    name:new FormControl('',{validators:[Validators.required,Validators.minLength(3),Validators.maxLength(12)]}),
+    email:new FormControl('',{validators:[Validators.required,Validators.email]}),
     passwords:new FormGroup({
-      password:new FormControl('',{validators:Validators.required}),
-      rePassword:new FormControl('',{validators:Validators.required}),
-    }),
+      password:new FormControl('',{validators:[Validators.required,Validators.minLength(6)]}),
+      rePassword:new FormControl('',{validators:[Validators.required,Validators.minLength(6)]}),
+    },   {validators:[equalValue]}
+  ),
     phone:new FormControl('',{validators:Validators.required}),
   });
    
@@ -32,16 +45,23 @@ export class SignupComponent {
     const rePassword=this.signupForm.value.passwords?.rePassword!
     const phone=this.signupForm.value.phone!
     this.isLoading=true
-    this.AuthSrvice.signUp(name,email,password,rePassword,phone).subscribe(resData=>{
+    this.AuthSrvice.signUp(name,email,password,rePassword,phone).pipe(
+      catchError((error:HttpErrorResponse)=>{
+          this.error=error.message
+          this.isLoading=false        
+          return throwError(() => new Error(error.message));
+      })
+    ).subscribe(resData=>{
       console.log(resData);
 
       if(resData.message==='success')
       {
+        Swal.fire({title:"Great !",text:"You Signed Up Successfully,Login Now",icon:'success'});
+
         this.isLoading=false;
-        this.router.navigate(['/products'])
+        this.router.navigate(['/login'])
       }
       else{
-        this.error="Register is Failed,Try Again !"
         this.isLoading=false;
       }
       

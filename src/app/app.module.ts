@@ -7,12 +7,18 @@ import { AllProductsComponent } from './products/displayAllProducts/all-products
 import { NavbarComponent } from './navbar/navbar/navbar.component';
 import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './signup/signup.component';
-import{HttpClient, HttpClientModule} from '@angular/common/http';
+import{HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GetSpecificProductComponent } from './products/get-specific-product/get-specific-product.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { CategoriesComponent } from './categories/categories/categories.component';
 import { LoaderComponent } from './shared/loader/loader.component';
+import { ErrorInterceptor } from './error.interceptors';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { PopupComponent } from './shared/popup/popup.component';
+import { GetCartComponent } from './cart/get-cart/get-cart.component';
+import { CheckoutPaymentComponent } from './cart/get-cart/checkout-payment/checkout-payment.component';
+import { AllOrdersComponent } from './all-orders/all-orders.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +30,10 @@ import { LoaderComponent } from './shared/loader/loader.component';
     GetSpecificProductComponent,
     CategoriesComponent,
     LoaderComponent,
+    PopupComponent,
+    GetCartComponent,
+    CheckoutPaymentComponent,
+    AllOrdersComponent,
     
   ],
   imports: [
@@ -32,9 +42,11 @@ import { LoaderComponent } from './shared/loader/loader.component';
     HttpClientModule,
     FontAwesomeModule,
     ReactiveFormsModule,
+    SweetAlert2Module.forRoot()
     
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

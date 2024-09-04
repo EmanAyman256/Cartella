@@ -8,7 +8,7 @@
             <p>{{specificProduct.description}}</p>
             <div class="mt-5">
             <p class=" p-bg rounded text-center">{{specificProduct.price|number}} EGP</p>
-            <!-- <button class="btn">Add To Cart </button> -->
+            <button class="btn" (click)="onAddProductToCart(specificProduct.id)">Add To Cart </button>
         </div>
         </div>
     </div>

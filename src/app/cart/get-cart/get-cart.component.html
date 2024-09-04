@@ -1,0 +1,60 @@
+<div class="text-center mt-2" *ngIf="isLoading" >
+    <app-loader/>
+</div>
+     <div class="row">
+        <div class="col-7 ms-md-5">
+            <button class='btn btn-danger mt-5 ms-5' (click)="deleteCart()">Empty Cart</button>
+        </div>
+     </div>
+     
+<div class="container  shadow-sm  d-sm-flex mt-2 rounded">
+    <div class="row" *ngIf="cartDetails.numOfCartItems==0">
+            <p>Add Products to your Cart Now </p>   
+    </div>
+     <div class="row" *ngIf="cartDetails.numOfCartItems!=0">
+        <div class="row mb-3 pt-4 pb-2 shadow" *ngFor="let item of cartDetails.data.products">
+        <div class="col-md-3">
+            <img [src]="item.product.imageCover" class="w-100 h-75" alt="">
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="row ms-4">
+                    <h5>{{item.product.title}}</h5>
+                    <h5>Price: {{item.price|number}} EGP</h5>
+                    <p class="text-danger">{{item.product.category.name}}</p>       
+                    <div class="col-md-5 mt-2">
+                        <span class="btn bg-main btn-sm" (click)="updateCartCount(item.product._id,(item.count-1))">
+                           <fa-icon [icon]="minusIcon"/>
+                        </span>
+                        <span class="ms-2 fs-5 fw-medium">{{item.count}}
+                        </span>
+                        <span class="btn bg-main ms-2 btn-sm" (click)="updateCartCount(item.product._id,(item.count+1))">
+                           <fa-icon [icon]="plusIcon"/>
+                        </span>
+                       <span>
+                            <button class="btn bg-main ms-2 fw-medium" (click)="deleteItem(item.product._id)">Remove Item</button>
+                        </span>
+                      
+                        </div>
+                        <div class="col-md-3 mt-2">
+                        </div>
+                        
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="rounded text-center text-white total fw-bold mb-2 mt-2 pt-2 pb-1">
+                <span class="mt-2"> Total Price : </span>
+                <span class="mt-2 ">{{cartDetails.data.totalCartPrice|number}} EGP
+                </span>
+            </div>
+
+        </div>
+        <div>
+            <button class="btn btn-dark text-white" routerLink="/pay">Check Payment</button> 
+        </div>
+     </div>
+</div>
+</div> 

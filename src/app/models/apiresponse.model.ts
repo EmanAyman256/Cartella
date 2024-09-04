@@ -14,6 +14,8 @@ export interface ApiResponse {
     data:ProductDetails
   }
   export interface CategoriesResp{
+    status:'success'|'fail'
+
     results: number;
     metadata: {
       currentPage: number;

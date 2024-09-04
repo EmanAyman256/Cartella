@@ -1,0 +1,17 @@
+.product{
+    height: 70%;
+}
+.total
+{
+    /* width: 150px;
+    height: 40px; */
+    background-color: rgb(221, 104, 163);
+}
+.bg-main{
+    background-color: rgb(221, 104, 163);
+
+}
+.bg-sm{
+    background-color: rgb(133, 0, 66);
+
+}

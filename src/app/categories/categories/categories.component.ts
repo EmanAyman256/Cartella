@@ -16,10 +16,10 @@ ngOnInit() {
   this.isLoading=true
 
   this.DataService.fetchCategories().subscribe(data=>{
+    
+      this.isLoading=false
+    
     this.category=data.data
-    this.isLoading=false
-
-
   })
 
   

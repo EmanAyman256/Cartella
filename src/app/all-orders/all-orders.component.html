@@ -1,0 +1,26 @@
+<h2 class="text-center mt-2">Your All Lovely Orders </h2>
+<div class="text-center mt-3" *ngIf="isLoading" >
+    <app-loader/>
+</div>
+<div *ngIf="failed">
+    <h3 class="text-center text-danger mt-5">No Items at Your Cart Now Please Add Products to your Cart</h3>
+
+</div>
+<div *ngIf="orders.length==0">
+    <h3 class="text-center text-danger mt-5 csr-ptr" routerLink="/products">Add Your First Order Now</h3>
+</div>
+<div class="container mt-2 p-5">
+    <div class="row " *ngFor="let order of orders">
+      
+        <div class="row rounded g-2 mt-3"*ngFor="let orderEl of order.cartItems" >
+                    <div class="col-md-3">
+                        <img [src]="orderEl.product.imageCover" class="w-100 h-50">
+                    </div>
+                    <div class="col-md-9">
+                        <h5>{{orderEl.product.title}}</h5>
+                        <h4>Price: {{orderEl.price|number}}</h4>
+                        <h5>Count :{{orderEl.count}}</h5>
+                    </div>
+        </div>
+    </div>
+</div>

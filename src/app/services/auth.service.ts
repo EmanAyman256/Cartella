@@ -13,8 +13,10 @@ export class AuthService {
   constructor(private http:HttpClient,private router:Router) { }
   u!:User
   user=new BehaviorSubject<User|null>(null)
-
-
+  isAuthenticated(): boolean {
+    const token = localStorage.getItem('userToken');
+    return !!token; // Or more advanced validation
+  }
   signUp(name:string,email:string,password:string,
     rePassword:string,phone:string):Observable<SignupResponse>
   {
@@ -25,10 +27,8 @@ export class AuthService {
       rePassword:rePassword,
       phone:phone
     }).pipe(tap(res=>{
-      const user=new User(res.token);
-      this.user.next(user)
-
-
+      const usertoken=new User(res.token);
+      this.user.next(usertoken)
     }));
   }
   Login(email:string,password:string):Observable<LoginResponse>
@@ -39,6 +39,7 @@ export class AuthService {
       password:password
     }
    ).pipe(tap(res=>{
+
     const user=new User(res.token);
       this.user.next(user)
 
@@ -46,6 +47,7 @@ export class AuthService {
   }
   LogOut()
   {
+    localStorage.removeItem('userToken')
      this.user.next(null);
   }
 }
