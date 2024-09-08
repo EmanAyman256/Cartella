@@ -3,7 +3,9 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { icon } from '@fortawesome/fontawesome-svg-core';
+import { jwtDecode } from 'jwt-decode';
 import { catchError, Subject, throwError } from 'rxjs';
+import { CustomJwtPayload } from 'src/app/models/Token.model';
 import { AuthService } from 'src/app/services/auth.service';
 import Swal from 'sweetalert2';
 
@@ -52,13 +54,26 @@ export class LoginComponent {
       })
     ).subscribe((resData)=>{
       this.isLoading=true;
-
+      const AdminAccess:CustomJwtPayload=jwtDecode(resData.token)
+      const AdminId=AdminAccess.id
+  //  const Admin= localStorage.setItem("AdminId",AdminId)!
+  
+    
       if(resData.message==='success')
       {
-        Swal.fire({title:"Great !",text:"You Logged In Successfully",icon:'success'});
         this.isLoading=false;
         localStorage.setItem('userToken',resData.token)
-        this.router.navigate(['/products'])
+        if(AdminId==="66ddc1ef1edf433558a01258")
+        {
+          Swal.fire({title:"Great !",text:"Admin Logged In Successfully",icon:'success'});
+
+          this.router.navigate(["/admin"])
+        }
+        else{
+          Swal.fire({title:"Great !",text:"You Logged In Successfully",icon:'success'});
+
+          this.router.navigate(["/products"])
+        }
       }
       else
       {

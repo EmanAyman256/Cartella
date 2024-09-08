@@ -4,6 +4,7 @@ import { ProductDetails } from '../models/product.model';
 import { Observable, take } from 'rxjs';
 import { ApiResponse, CategoriesResp, SpecificProductResp } from '../models/apiresponse.model';
 import { AuthService } from './auth.service';
+import { UserInfo } from '../models/UsersInfo.model';
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,8 @@ export class ApidataService {
   fetchCategories():Observable<CategoriesResp>
   {
     return this.http.get<CategoriesResp>("https://ecommerce.routemisr.com/api/v1/categories")
+  }
+  getAllUsers():Observable<UserInfo>{
+   return this.http.get<UserInfo>("https://ecommerce.routemisr.com/api/v1/users")
   }
 }

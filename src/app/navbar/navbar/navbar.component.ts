@@ -19,8 +19,10 @@ ngOnInit() {
 
   this.authService.user.subscribe(user=>{
     this.isAuthenticated=!!user
+    
     if (this.isAuthenticated) {
       const token = localStorage.getItem('userToken');
+
       if (token) {
         this.CartItems.getCartofUser(token).subscribe(data => {
           this.CartItems.updateNumOfProd(data.numOfCartItems);

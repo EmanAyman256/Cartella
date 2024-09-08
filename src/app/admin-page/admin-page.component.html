@@ -1,0 +1,20 @@
+
+<table class="table table-striped-columns">
+    <thead>
+      <tr>
+        <th scope="col">UserID</th>
+        <th scope="col">UserName</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Create At </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users.users">
+        <td>{{user._id}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.createdAt|date}}</td>
+      </tr>
+    </tbody>
+  </table>
+  

@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AllProductsComponent } from './products/displayAllProducts/all-products/all-products.component';
 import { NavbarComponent } from './navbar/navbar/navbar.component';
-import { LoginComponent } from './login/login/login.component';
-import { SignupComponent } from './signup/signup.component';
 import{HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { GetSpecificProductComponent } from './products/get-specific-product/get-specific-product.component'
@@ -19,6 +17,10 @@ import { PopupComponent } from './shared/popup/popup.component';
 import { GetCartComponent } from './cart/get-cart/get-cart.component';
 import { CheckoutPaymentComponent } from './cart/get-cart/checkout-payment/checkout-payment.component';
 import { AllOrdersComponent } from './all-orders/all-orders.component';
+import { LoginComponent } from './login/login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { AllOrdersComponent } from './all-orders/all-orders.component';
     GetCartComponent,
     CheckoutPaymentComponent,
     AllOrdersComponent,
+    AdminPageComponent,
     
   ],
   imports: [

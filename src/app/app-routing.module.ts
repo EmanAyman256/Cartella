@@ -9,6 +9,8 @@ import { CategoriesComponent } from './categories/categories/categories.componen
 import { GetCartComponent } from './cart/get-cart/get-cart.component';
 import { CheckoutPaymentComponent } from './cart/get-cart/checkout-payment/checkout-payment.component';
 import { AllOrdersComponent } from './all-orders/all-orders.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminAccess } from './admin.guard';
 
 const routes: Routes = [
   {
@@ -59,7 +61,13 @@ const routes: Routes = [
     component:AllOrdersComponent,
     canActivate:[AuthGuard]
 
+  },
+  {
+    path:'admin',
+    component:AdminPageComponent,
+    canActivate:[AdminAccess]
   }
+,
 
   
 ];
