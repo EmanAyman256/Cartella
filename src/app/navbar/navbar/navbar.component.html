@@ -13,6 +13,9 @@
       </button>
       <div class=" navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav ms-auto me-5 mb-2 mb-lg-0" >
+          <li class="nav-item cursor-pointer">
+            <a class="nav-link" *ngIf="isAuthenticated&& isAdmin" routerLink="/admin">All Users</a>
+          </li>
           <li  class="nav-item" *ngIf="isAuthenticated" >
             <a class="nav-link active" aria-current="page"  routerLink="/products" >Products</a>
           </li>

@@ -11,6 +11,7 @@ import { CheckoutPaymentComponent } from './cart/get-cart/checkout-payment/check
 import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminAccess } from './admin.guard';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 const routes: Routes = [
   {
@@ -68,6 +69,10 @@ const routes: Routes = [
     canActivate:[AdminAccess]
   }
 ,
+{
+path:"AccessDenied",
+component:UnauthorizedComponent
+}
 
   
 ];
