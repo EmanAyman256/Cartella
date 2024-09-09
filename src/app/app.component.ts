@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
     if (token) {
       this.authServ.user.next(new User(token))
     } else {
+      localStorage.removeItem("userToken")
       this.router.navigate(['/login']);
     }
   }

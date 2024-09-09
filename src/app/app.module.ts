@@ -20,6 +20,7 @@ import { AllOrdersComponent } from './all-orders/all-orders.component';
 import { LoginComponent } from './login/login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
     CheckoutPaymentComponent,
     AllOrdersComponent,
     AdminPageComponent,
+    UnauthorizedComponent,
     
   ],
   imports: [

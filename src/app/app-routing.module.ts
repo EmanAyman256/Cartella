@@ -67,14 +67,11 @@ const routes: Routes = [
     path:'admin',
     component:AdminPageComponent,
     canActivate:[AdminAccess]
-  }
-,
+  },
 {
-path:"AccessDenied",
-component:UnauthorizedComponent
-}
-
-  
+  path:"AccessDenied",
+  component:UnauthorizedComponent
+} 
 ];
 
 @NgModule({

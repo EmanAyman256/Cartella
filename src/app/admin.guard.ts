@@ -32,9 +32,9 @@ export class AdminAccess implements CanActivate {
                 return true;
 
             }
-            else{
-                return this.router.createUrlTree(['/signup']);
-
+            else
+            {
+                return this.router.createUrlTree(['/AccessDenied']);
             }
         }
         return this.router.createUrlTree(['/login']);
